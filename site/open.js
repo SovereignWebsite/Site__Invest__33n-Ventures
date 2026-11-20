@@ -184,7 +184,9 @@ function render(files, path) {
   csp.setAttribute('content', "default-src 'none'; img-src data:; media-src data:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'");
   doc.head.prepend(csp);
   const nav = doc.createElement('script');
-  nav.textContent = "document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var p=a.getAttribute('data-vault-page');if(p){e.preventDefault();parent.postMessage({vaultPage:p},'*');}else if(!(a.getAttribute('href')||'').startsWith('#')){e.preventDefault();}});";
+  // In-page links scroll inside the frame (a srcdoc frame would otherwise load the holding page's own URL);
+  // links to other sites are handed to this page, which opens them in a new tab with no opener and no referrer.
+  nav.textContent = "document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var p=a.getAttribute('data-vault-page');e.preventDefault();if(p){parent.postMessage({vaultPage:p},'*');}else if(h.charAt(0)==='#'){var t=h.length>1&&document.getElementById(decodeURIComponent(h.slice(1)));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});else if(h==='#'||h==='#top')scrollTo(0,0);}else if(/^(https?:|mailto:)/i.test(h)){parent.postMessage({vaultOpen:h},'*');}});";
   doc.body.append(nav);
   return '<!doctype html>' + doc.documentElement.outerHTML;
 }
@@ -303,6 +305,9 @@ function go(path) {
 }
 window.addEventListener('message', (e) => {
   if (current && e.source === $('#frame').contentWindow && e.data && typeof e.data.vaultPage === 'string' && current.files.has(e.data.vaultPage)) go(e.data.vaultPage);
+  if (current && e.source === $('#frame').contentWindow && e.data && typeof e.data.vaultOpen === 'string' && /^(https?:|mailto:)/i.test(e.data.vaultOpen)) {
+    const w = window.open(e.data.vaultOpen, '_blank', 'noopener,noreferrer'); if (w) w.opener = null;
+  }
 });
 
 async function openZip(buf, keyInput, zip) {
