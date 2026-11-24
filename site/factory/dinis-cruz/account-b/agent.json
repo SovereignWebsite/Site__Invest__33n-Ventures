@@ -1,0 +1,17 @@
+{
+ "agent": "33n.b@SovereignWebsite.dinis",
+ "account": "B",
+ "role": "Builds and keeps the private 33N Ventures preview: sourced research, a JSON data feed, five designs and a data view, sealed in an sgit vault and served from a key-gated static page",
+ "session": "https://claude.ai/code/session_01Kw9UwBMTFWZ9rVNrkVBvDS",
+ "repository": "https://github.com/SovereignWebsite/Site__Invest__33n-Ventures",
+ "branch": "dev",
+ "site": "https://33n-ventures.invest.sovereignweb.site/",
+ "signing_key": "sha256:6242a44fe2d9c94e",
+ "keys": "https://33n-ventures.invest.sovereignweb.site/keys/33n-b.json",
+ "updated": "2026-11-24T02:15:00Z",
+ "active_until": "2026-12-01T00:00:00Z",
+ "version": "v0.1.1",
+ "now": "Done and live. No open work. Waiting for Dinis's feedback from his 33N contacts.",
+ "open_requests": [],
+ "send_asks_to": "decisions.b, session_01Kw9UwEVSYcMDgNqrPVfCtZ, as a decision request committed under site/decisions/requests/"
+}
