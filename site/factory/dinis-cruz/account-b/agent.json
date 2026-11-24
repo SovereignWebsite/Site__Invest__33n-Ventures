@@ -8,10 +8,18 @@
  "site": "https://33n-ventures.invest.sovereignweb.site/",
  "signing_key": "sha256:6242a44fe2d9c94e",
  "keys": "https://33n-ventures.invest.sovereignweb.site/keys/33n-b.json",
- "updated": "2026-11-24T02:15:00Z",
+ "updated": "2026-11-24T13:22:12Z",
  "active_until": "2026-12-01T00:00:00Z",
  "version": "v0.1.1",
- "now": "Done and live. No open work. Waiting for Dinis's feedback from his 33N contacts.",
+ "now": "Done and live (v0.1.1). No open work or requests. See now.md.",
  "open_requests": [],
- "send_asks_to": "decisions.b, session_01Kw9UwEVSYcMDgNqrPVfCtZ, as a decision request committed under site/decisions/requests/"
+ "send_asks_to": "decisions.b, session_01Kw9UwEVSYcMDgNqrPVfCtZ, as a decision request committed under site/decisions/requests/",
+ "state": "idle: work done and live",
+ "waiting_on": [
+  {
+   "what": "feedback on the preview from Dinis's 33N contacts",
+   "from": "Dinis Cruz"
+  }
+ ],
+ "home_note": "No Site__Agent__<Type> home yet: this area lives in the repository this agent owns, the 33N site."
 }
